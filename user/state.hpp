@@ -57,6 +57,9 @@ public:
 
 	bool DisableLights = false;
 
+	uint8_t PrevColor = 255;
+	bool AntiBan = false;
+
 	PlayerSelection selectedPlayer;
 	std::queue<RPCInterface*> rpcQueue;
 

@@ -50,6 +50,19 @@ namespace SelfTab {
 				}
 			}
 
+			if (ImGui::Checkbox("Anti Kick/Ban", &State.AntiBan))
+			{
+				if (State.AntiBan)
+				{
+					State.PrevColor = GetPlayerData(*Game::pLocalPlayer)->fields.ColorId;
+					PlayerControl_RpcSetColor(*Game::pLocalPlayer, 10, NULL);
+				}
+				else if (State.PrevColor != 255)
+				{
+					PlayerControl_RpcSetColor(*Game::pLocalPlayer, State.PrevColor, NULL);
+				}
+			}
+
 			ImGui::EndTabItem();
 		}
 	}
